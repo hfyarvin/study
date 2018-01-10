@@ -1,4 +1,7 @@
-// 网易smtp.163.com(ssl:4665/994,非ssl: 25)
+/**
+ * 网易: smtp.163.com(ssl:465/994,非ssl: 25)
+ * Gmail: stmp.gmail.com(ssl:465)
+ */
 package main
 
 import (
