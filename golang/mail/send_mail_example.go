@@ -28,7 +28,6 @@ func send3() {
 	m.SetHeader("Subject", "这是一个文件主题")
 	m.SetBody("text/html", "正文，你好，这是正文，这是正文。")
 	d := gomail.NewPlainDialer("smtp.gmail.com", 465, "sender@gmail.com", "*****")
-	// d := gomail.NewPlainDialer("smtp.163.com", 25, "17688138833@163.com", "arvin171017")
 	err := d.DialAndSend(m)
 	check(err)
 	fmt.Printf("successful")
