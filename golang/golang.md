@@ -8,3 +8,4 @@
 
 ### Others
 * [golang practice](./practice/practice.md)
+* [发送邮件](./mail/send_mail_example.go)
