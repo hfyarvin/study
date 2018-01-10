@@ -5,3 +5,6 @@
 
 ### WEB
 * [GIN解决跨域](./web/cross-domain.md)
+
+### Others
+* [golang practice](./practice/practice.md)
