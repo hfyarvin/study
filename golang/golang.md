@@ -5,6 +5,7 @@
 
 ### WEB
 * [GIN解决跨域](./web/cross-domain.md)
+* [练习写的gin例子](./gin/example_app)
 
 ### Others
 * [golang practice](./practice/practice.md)
