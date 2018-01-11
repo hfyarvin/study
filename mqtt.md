@@ -26,3 +26,14 @@ mosquitto_sub -h 127.0.0.1 -t testtopic -u choi -P lanseyujie
 # 发布消息
 mosquitto_pub -h 127.0.0.1 -t testtopic -u choi -P lanseyujie -m "Hello MQTT"
 ````
+
+
+### EMQTT
+* Windows安装
+`.\bin\emqttd console`
+
+* emqttd注册为Windows服务
+`.\bin\emqttd install`
+
+* emqttd服务启动/停止/卸载
+`.\bin\emqttd start/stop/uninstall`
