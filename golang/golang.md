@@ -10,3 +10,4 @@
 ### Others
 * [golang practice](./practice/practice.md)
 * [发送邮件](./mail/send_mail_example.go)
+* [参考GIN-WEB](http://www.cnblogs.com/tudaogaoyang/p/8072418.html)
