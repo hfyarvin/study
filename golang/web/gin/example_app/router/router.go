@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"mime/multipart"
 	"net/http"
 	"os"
 	"time"
@@ -84,28 +85,55 @@ func UserDetail(c *gin.Context) {
 
 //上传文件"Content-Type: multipart/form-data"
 func Upload(c *gin.Context) {
-	file, header, _ := c.Request.FormFile("file")
-	log.Println(header.Filename)
-	dstFileName := fmt.Sprintf("./static/file/%s", header.Filename)
-	//把文件存在本地
-	out, err := os.Create(dstFileName)
-	defer out.Close()
+	// file, header, _ := c.Request.FormFile("file")
+	header, _ := c.FormFile("file")
+	err := saveFile(header)
 	if err != nil {
 		c.String(http.StatusBadRequest, err.Error())
 		c.Abort()
 		return
 	}
-	io.Copy(out, file)
 	c.String(http.StatusOK, header.Filename+" uploaded!")
 }
 
 func UploadAll(c *gin.Context) {
-	// form, _ := c.Request.MultipartReader()
-	// files, _ := form.NextPart() // File["upload[]"] //列表
+	//可能是限制大小
+	err := c.Request.ParseMultipartForm(20000)
+	if err != nil {
+		log.Fatal(err)
+		c.String(http.StatusBadRequest, err.Error())
+		c.Abort()
+		return
+	}
 
-	// for _, file := range files {
-	// 	log.Println(file.Filename)
-	// }
+	formdata := c.Request.MultipartForm //得到文件句柄
+	files := formdata.File["upload"]
+	for _, item := range files {
+		err := saveFile(item)
+		if err != nil {
+			c.String(http.StatusBadRequest, err.Error())
+			c.Abort()
+			return
+		}
+	}
+	c.String(http.StatusOK, "Successful uploaded!")
+}
 
-	c.String(http.StatusOK, " uploaded!")
+func saveFile(header *multipart.FileHeader) error {
+	file, err := header.Open()
+	defer file.Close()
+	if err != nil {
+		return err
+	}
+	filename := header.Filename
+	out, createFileErr2 := os.Create(fmt.Sprintf("./static/file/%s", filename))
+	defer out.Close()
+	if createFileErr2 != nil {
+		return createFileErr2
+	}
+	_, cErr := io.Copy(out, file)
+	if cErr != nil {
+		return cErr
+	}
+	return nil
 }
