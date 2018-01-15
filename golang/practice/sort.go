@@ -5,6 +5,7 @@ package main
 
 import (
 	"fmt"
+	"sort"
 )
 
 /**************** 冒泡排序 *********************/
@@ -139,6 +140,12 @@ func ShellSort(a []int) []int {
 }
 func main() {
 	a := []int{5, 2, 9, 4, 7, 6, 1, 3, 8}
-	b := ShellSort(a)
+	b := GSort(a)
 	fmt.Println(b)
+}
+
+/**************** GO排序 *********************/
+func GSort(a []int) []int {
+	sort.Ints(a)
+	return a
 }
