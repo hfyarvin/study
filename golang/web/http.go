@@ -1,6 +1,7 @@
 package main
 
 import (
+	"crypto/tls"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -13,8 +14,12 @@ import (
 )
 
 func get(url string, headers map[string]string) *http.Response {
+	tr := &http.Transport{
+		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+	}
 	client := &http.Client{
-		Timeout: 15 * time.Second,
+		Timeout:   15 * time.Second,
+		Transport: tr,
 	}
 	req, err := http.NewRequest("GET", url, nil)
 
@@ -35,7 +40,7 @@ func get(url string, headers map[string]string) *http.Response {
 	return resp
 }
 func main() { //生成client 参数为默认
-	postTest()
+	AddUser()
 }
 
 // body, err := ioutil.ReadAll(response.Body)
@@ -51,7 +56,7 @@ func testGet() {
 	h["Accept"] = "application/json"
 	h["Authorization"] = ""
 
-	response := get(url, h, nil)
+	response := get(url, h)
 	defer response.Body.Close()
 	body, err := ioutil.ReadAll(response.Body)
 	if err != nil {
@@ -66,8 +71,12 @@ func testGet() {
 }
 
 func post(url string, headers map[string]string, bodyStr string) *http.Response {
+	tr := &http.Transport{
+		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+	}
 	client := &http.Client{
-		Timeout: 15 * time.Second,
+		Timeout:   15 * time.Second,
+		Transport: tr,
 	}
 
 	req, err := http.NewRequest("POST", url, strings.NewReader(bodyStr))
