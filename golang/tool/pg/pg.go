@@ -21,7 +21,7 @@ func init() {
 	if err != nil {
 		fmt.Println(err)
 	}
-	// engine.ShowSQL()
+	engine.ShowSQL() //展示sql语句
 	err = engine.Ping()
 	if err != nil {
 		fmt.Println(err)
@@ -68,7 +68,7 @@ func (self *Account) Create() *Account {
 	return self
 }
 
-//通过ID获取Article
+//通过ID获取
 func GetArticleById(id int64) *Account {
 	item := new(Account)
 	// has, err := engine.Where("id = ?", id).Get(item)
@@ -105,7 +105,3 @@ func DeleteUserBySQL(name string) bool {
 func (self *Account) Update() {
 	engine.Id(self.Id).Update(self)
 }
-
-/**
- *
- */
