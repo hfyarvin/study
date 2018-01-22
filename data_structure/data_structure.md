@@ -15,4 +15,4 @@
   + 算法时间复杂度T(n)=O(f(n))--常数化一
     + O(1)<O(logn)<O(n)<O(nlogn)<O(n<sup>2</sup>)<O(n<sup>3</sup>)<O(2<sup>n</sup>)<O(n!)<O(n<sup>n</sup>)
   + 空间复杂度
-  
+[^hello]: hi
