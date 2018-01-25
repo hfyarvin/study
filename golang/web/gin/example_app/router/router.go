@@ -12,6 +12,7 @@ import (
 	"os"
 	"time"
 
+	"../controllers/test_controller"
 	"github.com/gin-gonic/gin"
 )
 
@@ -22,6 +23,8 @@ func Router(r *gin.Engine) {
 	r.GET("/search", Baidu)
 	r.POST("/upload", Upload)
 	r.POST("/upload/all", UploadAll)
+
+	r.GET("/test", test_controller.GoToThePage)
 }
 
 //数据绑定解析

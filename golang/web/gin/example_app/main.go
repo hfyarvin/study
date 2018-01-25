@@ -30,5 +30,7 @@ func main() {
 	// 	MaxHeaderBytes: 1 << 20,
 	// }
 	// s.ListenAndServe()
+	r.LoadHTMLGlob("./static/views/*")
+	r.Static("/js", "./static/js")
 	r.Run(":555")
 }

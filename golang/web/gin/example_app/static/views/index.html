@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>a</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<style>
+	.div{margin-bottom:5px;background-color:skyblue;}
+	</style>
+</head>
+<body>
+
+	 <a href="javascript:void(0)" class="add">生成一个div元素</a>
+	    <div class="tg"></div>
+	</body>
+	<script type="text/javascript">
+	$(function(){
+	    $(".add").click(function(){
+	    	{{range $k,$v := .list}}
+	    	var s = {{$k}}
+	        var newObj = $('<div class="div"></div>');
+	        newObj.attr("id", s+"art")
+	        $('body').append(newObj);
+	        newObj.text("我是第"+(newObj.index()+1)+"个生成的div").attr("from","new");
+	        
+	        {{end}}
+	    });
+	});
+	</script>
+</body>
+</html>
