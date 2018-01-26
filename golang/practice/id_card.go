@@ -11,6 +11,7 @@ func main() {
 	idCard := "511025199410280934"
 	b := VerifyIdCard(idCard)
 	fmt.Println(b)
+	fmt.Println(GetAge(GetAgeStr(idCard)))
 }
 
 //获取age字符串
