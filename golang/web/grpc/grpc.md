@@ -35,3 +35,8 @@ openssl req -new -x509 -key server.key -out ca.pem -days 1095
 
  
 ```
+
+
++ *gw*
+  + protoc -I . --go_out=plugins=grpc,Mgoogle/protobuf/descriptor.proto=github.com/golang/protobuf/protoc-gen-go/descriptor:. google/api/*.proto
+  + protoc -I . --go_out=plugins=grpc,Mgoogle/api/annotations.proto=git.vodjk.com/go-grpc/example/proto/google/api:. ./*.proto
