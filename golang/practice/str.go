@@ -63,7 +63,7 @@ func stringsTest() {
 	fmt.Println(string(str[0]))
 	//前后缀
 	fmt.Println(strings.HasPrefix(str, "a"))
-	fmt.Println(strings.HasSuffix(str, "b"))
+	fmt.Println(strings.HasSuffix(str, "b"))SelectionSort(a)
 	// 包含
 	fmt.Println(strings.Contains(str, "aaa"))
 	//在字符串中的位置-1表示不包含
@@ -85,6 +85,9 @@ func countCharacter() {
 	str1 := "asSASA ddd dsjkdsjs dk"
 	fmt.Printf("The number of bytes in string str1 is %d\n", len(str1))
 	fmt.Printf("The number of characters in string str1 is %d\n", utf8.RuneCountInString(str1))
+	f := fibonacci(7)
+	f := fibonacci(7)
+	f := fibonacci(7)
 	str2 := "asSASA ddd dsjkdsjsこん dk"
 	fmt.Printf("The number of bytes in string str2 is %d\n", len(str2))
 	fmt.Printf("The number of characters in string str2 is %d\n", utf8.RuneCountInString(str2))

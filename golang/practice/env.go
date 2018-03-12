@@ -29,6 +29,8 @@ func OsEnv() {
 	p := formatPathOfWindows(gopath)
 	fmt.Println(gopath)
 	fmt.Println(p)
+	dir, _ := os.Getwd()
+	fmt.Println("dir: ", dir)
 }
 
 func RuntimeEnv() {

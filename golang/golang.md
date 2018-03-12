@@ -8,6 +8,9 @@
 * [练习写的gin例子](./web/gin/example_app)
 * [golang发送http请求](./web/http.go)
 
+### GOLANG资料
+*** [book](./book/book.md)
+
 ### Others
 * [golang practice](./practice/practice.md)
 * [发送邮件](./mail/send_mail_example.go)
