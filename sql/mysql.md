@@ -7,3 +7,8 @@ show create table t_name;
 ```sql
 show create database d_name;
 ```
+
++ 创建数据库
+```sql
+CREATE DATABASE IF NOT EXISTS arvinDB DEFAULT CHARSET utf8 COLLATE utf8_general_ci
+```

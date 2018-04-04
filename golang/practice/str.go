@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"strings"
 	"unicode/utf8"
+	"strconv"
 )
 
 /**
@@ -40,8 +41,8 @@ func way4() {
 }
 
 func main() {
-	str := "arvin"
-	fmt.Println(string(str[0]))
+	// fmt.Println(strings.Replace("oink oink oink", "k", "ky", -1))
+	asc()
 }
 
 func stringsTest() {
@@ -63,7 +64,7 @@ func stringsTest() {
 	fmt.Println(string(str[0]))
 	//前后缀
 	fmt.Println(strings.HasPrefix(str, "a"))
-	fmt.Println(strings.HasSuffix(str, "b"))SelectionSort(a)
+	fmt.Println(strings.HasSuffix(str, "b"))
 	// 包含
 	fmt.Println(strings.Contains(str, "aaa"))
 	//在字符串中的位置-1表示不包含
@@ -85,10 +86,54 @@ func countCharacter() {
 	str1 := "asSASA ddd dsjkdsjs dk"
 	fmt.Printf("The number of bytes in string str1 is %d\n", len(str1))
 	fmt.Printf("The number of characters in string str1 is %d\n", utf8.RuneCountInString(str1))
-	f := fibonacci(7)
-	f := fibonacci(7)
-	f := fibonacci(7)
+	// f := fibonacci(7)
 	str2 := "asSASA ddd dsjkdsjsこん dk"
 	fmt.Printf("The number of bytes in string str2 is %d\n", len(str2))
 	fmt.Printf("The number of characters in string str2 is %d\n", utf8.RuneCountInString(str2))
+}
+
+
+func asc() {
+	fmt.Println("=======================")
+	c:='a'
+	fmt.Println(c)
+	fmt.Println(string(c))
+	fmt.Println(string(97))
+	fmt.Println("=======================")
+	str1 := "97"
+	strInt,_ := strconv.Atoi(str1)
+	fmt.Println(strInt)
+	fmt.Println(string(strInt))
+	fmt.Println("=======================")
+	for _, char := range []rune("12.34") {
+		fmt.Println(char)//49
+		fmt.Println(string(char))//1
+		fmt.Println(string(49))
+    }
+	fmt.Println("=======================")
+	str2:="f3eee07574f0c9692854"
+	fmt.Println(str2[0:10])
+	fmt.Println("=======================")
+	 i,_ := strconv.ParseInt("2E",16,10)
+	 fmt.Println(string(i))
+	 fmt.Println("=======================")
+	 var s []string
+	 s = append(s, "f3","ee","e0","75","74")
+	 f := ascToFloat64(s)
+	 fmt.Println(f)
+	 fmt.Println("=======================")
+}
+
+func ascToFloat64(s []string ) float64 {
+i := ""
+for _,v := range s {
+	m,_:= strconv.ParseInt(v, 16, 10)
+	fmt.Println("m:", m)
+	i = fmt.Sprintf("%s%s",i,string(m))
+	fmt.Println("i", i)
+}
+
+f,_:= strconv.ParseFloat(i, 64)
+fmt.Println("f",f)
+return f
 }

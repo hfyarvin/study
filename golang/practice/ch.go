@@ -8,6 +8,10 @@ func main() {
 	t1()
 }
 
+var (
+	svv = "1--31=20[["
+)
+
 func t1() {
 	c1 := make(chan int, 1)
 	c1 <- 10

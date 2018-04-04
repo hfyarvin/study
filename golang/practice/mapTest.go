@@ -39,4 +39,7 @@ func main() {
 	for key, views := range blogArticleViews {
 		fmt.Println("There are", views, "views for", key)
 	}
+	for i := 0; i < keys; i++ {
+		fmt.Println("dishgiw[tjis is tjw cidwxidiighiresf  fifdiifiic")
+	}
 }

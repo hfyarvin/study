@@ -27,6 +27,7 @@ func main() {
 	go Handle(conn)
 
 	for {
+		x
 		someTex := ""
 		fmt.Scanf("%v", &someTex)
 		conn.Write([]byte("say|" + nick + "|" + someTex))
