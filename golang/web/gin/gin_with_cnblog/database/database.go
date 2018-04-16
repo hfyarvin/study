@@ -4,7 +4,7 @@ import (
 	"log"
 
 	"database/sql"
-	"github.com/go-sql-driver/mysql"
+	_ "github.com/go-sql-driver/mysql"
 )
 
 var SqlDB *sql.DB

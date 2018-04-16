@@ -5,10 +5,13 @@ import (
 	"log"
 
 	// db "../database"
-	"database/sql"
+	db "../database"
 )
 
-var SqlDB *sql.DB
+// var SqlDB *sql.DB
+const (
+	Person_TableName = "person"
+)
 
 type Person struct {
 	Id        int    `json:"id"         form:"id"`
@@ -16,9 +19,14 @@ type Person struct {
 	LastName  string `json:"last_name"  form:"last_name"`
 }
 
+func (this *Person) TableName() string {
+	return Person_TableName
+}
+
 func (p *Person) AddPerson() bool {
-	rs, err := SqlDB.Exec("INSERT INFO person(first_name, last_name) VALUES (?, ?)", p.FirstName, p.LastName)
+	rs, err := db.SqlDB.Exec("INSERT INTO person(first_name, last_name) VALUES (?, ?)", p.FirstName, p.LastName)
 	if err != nil {
+		log.Println("err1:", err.Error())
 		return false
 	}
 
@@ -26,6 +34,7 @@ func (p *Person) AddPerson() bool {
 	fmt.Println(id)
 
 	if err != nil {
+		log.Println("err2:", err.Error())
 		return false
 	} else {
 		return true
@@ -33,7 +42,7 @@ func (p *Person) AddPerson() bool {
 }
 
 func (p *Person) EditPerson() bool {
-	rs, err := SqlDB.Exec("UPDATE person set first_name=?, last_name=? where id=?", p.FirstName, p.LastName, p.Id)
+	rs, err := db.SqlDB.Exec("UPDATE person set first_name=?, last_name=? where id=?", p.FirstName, p.LastName, p.Id)
 	if err != nil {
 		return false
 	}
@@ -50,7 +59,7 @@ func (p *Person) EditPerson() bool {
 
 // 删除
 func DeletePerson(pId int) bool {
-	rs, err := SqlDB.Exec("Delete From person where id=? ", pId)
+	rs, err :=db.SqlDB.Exec("Delete From person where id=? ", pId)
 	if err != nil {
 		return false
 	}
@@ -74,7 +83,7 @@ func GetPersonList(pageno, pagesize int, search string) (persons []Person) {
 		sql = fmt.Sprintf("SELECT id, first_name, last_name FROM person limit %d,%d", (pageno-1)*pagesize, pagesize)
 	}
 
-	rows, err := SqlDB.Query(sql)
+	rows, err := db.SqlDB.Query(sql)
 	if err != nil {
 		return nil
 	}
