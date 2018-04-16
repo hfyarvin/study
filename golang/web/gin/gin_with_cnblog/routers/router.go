@@ -8,5 +8,5 @@ import (
 func Router(r *gin.Engine)  {
 	r.GET("/hello", controllers.Hello)
 	person := r.Group("/person")
-	person.POST("/add", controllers.CreatePerson)
+	person.POST("/new", controllers.CreatePerson)
 }

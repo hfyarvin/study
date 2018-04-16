@@ -6,7 +6,9 @@ import (
 )
 
 func CreatePerson(c *gin.Context) {
-	p := &models.Person{LastName: "Wong", FirstName: "Arvin"}
+	lastName := c.Query("last_name")
+	firstName := c.Query("first_name")
+	p := &models.Person{LastName: lastName, FirstName: firstName}
 	t := p.AddPerson()
 	c.JSON(200, t)
 }
