@@ -94,35 +94,48 @@ func countCharacter() {
 
 
 func asc() {
-	fmt.Println("=======================")
-	c:='a'
-	fmt.Println(c)
-	fmt.Println(string(c))
-	fmt.Println(string(97))
-	fmt.Println("=======================")
-	str1 := "97"
-	strInt,_ := strconv.Atoi(str1)
-	fmt.Println(strInt)
-	fmt.Println(string(strInt))
-	fmt.Println("=======================")
-	for _, char := range []rune("12.34") {
-		fmt.Println(char)//49
-		fmt.Println(string(char))//1
-		fmt.Println(string(49))
-    }
-	fmt.Println("=======================")
-	str2:="f3eee07574f0c9692854"
-	fmt.Println(str2[0:10])
-	fmt.Println("=======================")
+	// fmt.Println("=======================")
+	// c:='a'
+	// fmt.Println(c)
+	// fmt.Println(string(c))
+	// fmt.Println(string(97))
+	// fmt.Println("=======================")
+	// str1 := "97"
+	// strInt,_ := strconv.Atoi(str1)
+	// fmt.Println(strInt)
+	// fmt.Println(string(strInt))
+	// fmt.Println("=======================")
+	// for _, char := range []rune("12.34") {
+	// 	fmt.Println(char)//49
+	// 	fmt.Println(string(char))//1
+	// 	fmt.Println(string(49))
+    // }
+	// fmt.Println("=======================")
+	// str2:="f3eee07574f0c9692854"
+	// fmt.Println(str2[0:10])
+	// fmt.Println("=======================")
 	 i,_ := strconv.ParseInt("2E",16,10)
 	 fmt.Println(string(i))
 	 fmt.Println("=======================")
 	 var s []string
-	 s = append(s, "f3","ee","e0","75","74")
+	//  s = append(s, "f3","ee","e0","75","74")
+	// 3031322E3334 
+	// s = append(s,"30","31","32","2E","33","34")
+	s = append(s,"30","31","32")
 	 f := ascToFloat64(s)
 	 fmt.Println(f)
-	 fmt.Println("=======================")
-}
+	 fmt.Println("=====================sb==")
+	 var sb []byte
+	 for _,v := range s {
+		 bs :=[]byte(v)
+		 for _,i := range bs{
+			sb = append(sb,i)
+		}
+	 }
+	 fmt.Println("sb:",sb)
+	 sbFloat ,_ :=strconv.ParseFloat(string(sb),64)
+	 fmt.Println(sbFloat)
+	}
 
 func ascToFloat64(s []string ) float64 {
 i := ""
