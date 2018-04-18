@@ -102,7 +102,31 @@ func GetPersonList(pageno, pagesize int, search string) (persons []Person) {
 	return persons
 }
 
-//
-func GetRecordNum() {
+//记录数
+func GetRecordNum(search string) int {
+	num := 0
+	sql := fmt.Sprintf("SELECT id, first_name, last_name From person where last_name like '%%%s%%' or first_name like '%%%s%%'", search, search)
+	rows, err := db.SqlDB.Query(sql)
+	if err != nil {
+		return 0
+	}
+	defer rows.Close()
 
+	for rows.Next() {
+		num ++ 
+	}
+
+	return num
+}
+
+func GetPersonById(id int) (p *Person) {
+	var person Person
+
+	err := db.SqlDB.QueryRow("SELECT id, first_name, last_name FROM person WHERE id = ?", id).Scan(&person.Id, &person.FirstName, &person.LastName)
+
+	if err != nil {
+		log.Println("Get Person By Id Error: ", err.Error())
+	}
+
+	return &person
 }

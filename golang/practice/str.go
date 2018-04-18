@@ -42,7 +42,32 @@ func way4() {
 
 func main() {
 	// fmt.Println(strings.Replace("oink oink oink", "k", "ky", -1))
-	asc()
+	upper()
+}
+
+func upper() {
+	// str := "黄飞云"
+	// s1 := strings.ToUpper(str[0:1])
+	// fmt.Println(s1)
+	// s2 := s1 + str[1:]
+	// fmt.Println(str[1:])
+	// fmt.Println(s2)
+	_firstName  := "飞云"
+	_lastName := "黄"
+
+	// s := toUpperPrefix("abcd")
+	// fmt.Println(s)
+	firstName := toUpperPrefix(_firstName)
+	lastName := toUpperPrefix(_lastName)
+	name := firstName + lastName
+	fmt.Println(name)
+}
+
+//首字母大写
+func toUpperPrefix(str string) string{
+	str = strings.ToLower(str)
+	temp := strings.ToUpper(str[0:1])
+	return temp + str[1:]
 }
 
 func stringsTest() {
