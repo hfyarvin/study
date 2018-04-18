@@ -6,7 +6,7 @@ import (
 )
 
 func Router(r *gin.Engine) {
-	r.GET("/hello", controllers.Hello)
+	r.GET("/hello", Hello)
 	person := r.Group("/person")
 	person.POST("/new", CreatePerson)
 

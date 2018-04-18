@@ -3,6 +3,7 @@ package controllers
 import (
 	"net/http"
 	"strconv"
+	"fmt"
 
 	"../models"
 	"github.com/gin-gonic/gin"
@@ -73,10 +74,10 @@ func PageNextData(c *gin.Context) {
 		return
 	}
 	//得到数据集
-	datalist := GetPersonList(pageno, 3, search)
+	datalist := models.GetPersonList(pageno, 3, search)
 
 	//得到记录的总数
-	count := GetRecordNum(search)
+	count := models.GetRecordNum(search)
 	//返回结果
 	c.JSON(http.StatusOK, gin.H{
 		"datalist": datalist,
@@ -101,7 +102,7 @@ func AddPersonApi(c *gin.Context) {
 	lastName := c.PostForm("last_name")
 	fmt.Println("执行到此处A")
 	//赋值
-	p := Person{FirstName: firstName, LastName: lastName}
+	p := models.Person{FirstName: firstName, LastName: lastName}
 	//调用模型中的新增的方法
 	ra := p.AddPerson()
 	//返回结果
@@ -196,7 +197,7 @@ func DeletePersonApi(c *gin.Context) {
 	}
 
 	//调用模型中的删除的方法
-	ra := DeletePerson(id)
+	ra := models.DeletePerson(id)
 	if ra == false {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"error": "删除失败",
